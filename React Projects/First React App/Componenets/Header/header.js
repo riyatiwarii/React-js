@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import logo from "../../Assets/logo.jpg";
 import "./header.css";
-
+import { CurrentLocation } from "../Location Detector/location";
 const Header = () => {
   return (
     <nav>
@@ -11,7 +11,10 @@ const Header = () => {
       </div>
       <div className="nav-items-list">
         <div className="location-container">
-          <span id="location">Location</span>
+          <span id="location">
+            
+          </span>
+          
           <i className="fa-solid fa-caret-down"></i>
         </div>
 

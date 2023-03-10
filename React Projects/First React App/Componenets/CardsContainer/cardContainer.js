@@ -15,7 +15,7 @@ const CardContainer = () => {
       }}
     >
       {Data.map((item) => {
-        return <Card key={item.data.data.id} Data={item} />;
+        return <Card key={item.data.data.id} Data={item.data.data} />;
       })}
       {/* {Card(Data[0])}
         
