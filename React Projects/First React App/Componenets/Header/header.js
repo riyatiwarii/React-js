@@ -4,6 +4,7 @@ import logo from "../../Assets/logo.jpg";
 import "./header.css";
 import { useState } from "react";
 import Data from "../../data2.json";
+import { SearchItems } from "../CardsContainer/cardContainer";
 
 //State
 //Hooks---> Hooks are React Componenets
@@ -11,14 +12,8 @@ import Data from "../../data2.json";
 
 const Header = () => {
   // let searchText = "KFC";
-  {function restaurantSearch(searchText) {
-    if (true) {
-      <h1>HELLO FROM THE SPACE</h1>
-    }
-  }}
-  let [searchText, setSearchText] = useState("");
-  console.log(searchText, setSearchText);
 
+ 
   return (
     <nav>
       <div className="nav-items-icon">
@@ -32,7 +27,9 @@ const Header = () => {
         </div>
 
         <ul>
-          <li className="searchContainer">
+        
+
+          {/* <li className="searchContainer">
             <input
               className="searchBox"
               type="text"
@@ -47,7 +44,8 @@ const Header = () => {
               <i className="nav-icons fa-solid fa-magnifying-glass"></i>
               <span className="nav-list-text">Search</span>
             </button>
-          </li>
+          </li> */}
+
           <li>
             <button className="btn">
               <i className="nav-icons fa-solid fa-tag"></i>
@@ -61,7 +59,6 @@ const Header = () => {
             </button>
           </li>
           <li>
-           
             <button className="btn">
               <i className="nav-icons fa-solid fa-user-plus"></i>
               <span className="nav-list-text"> Sign In</span>
@@ -75,7 +72,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-     
     </nav>
   );
 };
