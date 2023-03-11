@@ -64,6 +64,24 @@ nav {
   color: rgb(226, 111, 45);
 }
 
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.searchBox {
+  padding: 0.6em 1em;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  border: 1px solid rgb(61, 61, 59);
+}
+
+.searchBox:focus {
+  border: 1px solid rgb(61, 61, 59);
+}
 @media screen and (max-width: 800px) {
   .nav-items-list {
     justify-content: center;

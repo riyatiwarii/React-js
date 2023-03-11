@@ -1,6 +1,13 @@
 import React from "react";
+
 import "./card.css";
-import { Data } from "../../Data/data";
+// import * as riya from "../Constants/constants"
+
+//Default Import
+// import image_URL from "../Constants/constants";
+
+//Named Import
+import { image_URL } from "../Constants/constants";
 
 //image
 //name
@@ -10,7 +17,15 @@ import { Data } from "../../Data/data";
 //
 
 const Card = ({ Data }) => {
-  const {cloudinaryImageId,area,maxDeliveryTime,name,cuisines,avgRating,costForTwoString} = Data;
+  const {
+    cloudinaryImageId,
+    area,
+    maxDeliveryTime,
+    name,
+    cuisines,
+    avgRating,
+    costForTwoString,
+  } = Data;
   //Optional Chaining Used
   return (
     <div className="cards-container">
@@ -18,7 +33,7 @@ const Card = ({ Data }) => {
         <div
           className="card-media"
           style={{
-            backgroundImage: `url(https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`,
+            backgroundImage: `url(${image_URL}${cloudinaryImageId})`,
           }}
         >
           <div className="pro-discount">{area}</div>
@@ -33,10 +48,7 @@ const Card = ({ Data }) => {
             </div>
             <div className="place-review">
               <p className="rating">{avgRating} &#x2605;</p>
-              <p className="per-person">
-                {" "}
-                {costForTwoString.toLowerCase()}
-              </p>
+              <p className="per-person"> {costForTwoString.toLowerCase()}</p>
             </div>
           </div>
         </div>
