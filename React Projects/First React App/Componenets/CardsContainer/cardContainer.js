@@ -2,46 +2,49 @@ import React from "react";
 import { Card } from "../Cards/cards";
 import Data from "../../data2.json";
 import { useState } from "react";
+import "./CardContainer.css";
 
 const CardContainer = () => {
   const [searchText, setSearchText] = useState("");
-  const [restaurantData, setRestaurantData] = useState(Data);
-  
-  const searchItems = (searchText, restaurantData) => {
-    return restaurantData.filter((item) => {
+  const [restaurantList, setRestaurantList] = useState(Data);
+  console.log(restaurantList);
+  const searchRestaurant = (searchText, restaurantList) => {
+    console.log(restaurantList);
+    const filteredData = restaurantList.filter((card) => {
       if (
-        item.data.data.name.toLowerCase().includes(searchText.toLowerCase())
+        card.data.data.name.toLowerCase().includes(searchText.toLowerCase())
       ) {
-        return item;
+        return card;
       }
     });
+
+    return filteredData;
   };
-console.log(restaurantData)
   return (
     <>
-      <li className="searchContainer">
+      <div className="searchBar">
         <input
-          className="searchBox"
+          id="searchQueryInput"
+          placeholder="Search Restaurant Here"
           type="text"
           value={searchText}
-          placeholder="Search Restaurant"
           onChange={(e) => {
             setSearchText(e.target.value);
-            console.log(searchText);
+            if (e.target.value === "") {
+              setRestaurantList(Data);
+            }
           }}
-        ></input>
+        />
         <button
-          className="btn"
+          id="searchQuerySubmit"
           onClick={() => {
-            
-            const filterItems = searchItems(searchText, restaurantData);
-            setRestaurantData(filterItems);
+            setRestaurantList(searchRestaurant(searchText, Data));
           }}
         >
-          <i className="nav-icons fa-solid fa-magnifying-glass"></i>
-          <span className="nav-list-text">Search</span>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
-      </li>
+      </div>
+
       <div
         className="card-container"
         style={{
@@ -52,7 +55,7 @@ console.log(restaurantData)
           padding: "1em 2em",
         }}
       >
-        {restaurantData.map((item) => {
+        {restaurantList.map((item) => {
           return <Card key={item.data.data.id} Data={item.data.data} />;
         })}
 

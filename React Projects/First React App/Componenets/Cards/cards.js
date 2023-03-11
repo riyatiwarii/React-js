@@ -1,20 +1,8 @@
 import React from "react";
 
 import "./card.css";
-// import * as riya from "../Constants/constants"
 
-//Default Import
-// import image_URL from "../Constants/constants";
-
-//Named Import
 import { image_URL } from "../Constants/constants";
-
-//image
-//name
-// rating
-//delivery time
-//cuisines
-//
 
 const Card = ({ Data }) => {
   const {

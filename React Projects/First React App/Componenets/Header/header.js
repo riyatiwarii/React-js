@@ -1,19 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import logo from "../../Assets/logo.jpg";
 import "./header.css";
-import { useState } from "react";
-import Data from "../../data2.json";
-import { SearchItems } from "../CardsContainer/cardContainer";
-
-//State
-//Hooks---> Hooks are React Componenets
-//Usestate() ---> Usestate is one of those componenets
-
 const Header = () => {
-  // let searchText = "KFC";
-
- 
   return (
     <nav>
       <div className="nav-items-icon">
@@ -25,27 +13,7 @@ const Header = () => {
 
           <i className="fa-solid fa-caret-down"></i>
         </div>
-
         <ul>
-        
-
-          {/* <li className="searchContainer">
-            <input
-              className="searchBox"
-              type="text"
-              value={searchText}
-              placeholder="Search Restaurant"
-              onChange={(e) => {
-                setSearchText(e.target.value);
-                console.log(searchText);
-              }}
-            ></input>
-            <button className="btn" onClick={restaurantSearch(searchText)}>
-              <i className="nav-icons fa-solid fa-magnifying-glass"></i>
-              <span className="nav-list-text">Search</span>
-            </button>
-          </li> */}
-
           <li>
             <button className="btn">
               <i className="nav-icons fa-solid fa-tag"></i>
