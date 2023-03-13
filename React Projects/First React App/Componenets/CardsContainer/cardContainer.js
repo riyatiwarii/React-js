@@ -42,8 +42,29 @@ const CardContainer = () => {
 
   return !restaurantList.length ? (
     <>
-    <ShimmerUI />
-    <h1>Loading..</h1>
+      <div className="searchBar">
+        <input
+          id="searchQueryInput"
+          placeholder="Search Restaurant Here"
+          type="text"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            if (e.target.value === "") {
+              setRestaurantList(allRestaurantData);
+            }
+          }}
+        />
+        <button
+          id="searchQuerySubmit"
+          onClick={() => {
+            setRestaurantList(searchRestaurant(searchText, restaurantList));
+          }}
+        >
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <ShimmerUI />
     </>
   ) : (
     <>
