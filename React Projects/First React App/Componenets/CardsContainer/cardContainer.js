@@ -1,25 +1,42 @@
 import React from "react";
 import { Card } from "../Cards/cards";
 import Data from "../../data2.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CardContainer.css";
+import { API_URL } from "../Constants/constants";
 
 const CardContainer = () => {
   const [searchText, setSearchText] = useState("");
-  const [restaurantList, setRestaurantList] = useState(Data);
+  const [restaurantList, setRestaurantList] = useState([]);
+
   console.log(restaurantList);
+
   const searchRestaurant = (searchText, restaurantList) => {
     console.log(restaurantList);
     const filteredData = restaurantList.filter((card) => {
-      if (
-        card.data.data.name.toLowerCase().includes(searchText.toLowerCase())
-      ) {
+      if (card?.data?.name.toLowerCase().includes(searchText.toLowerCase())) {
         return card;
       }
     });
 
     return filteredData;
   };
+
+  //[]---> once it will render the USEEFFECT for the very initial time but not later whenever component is rendered
+  // [restaurantList] --> it will render the USEEFFECT for the very initial time  USEEFFFECT will render whenever restaurantList Changes
+  useEffect(() => {
+    console.log("USEEFFECT");
+    APIRequest();
+  }, []);
+
+  async function APIRequest() {
+    const data = await fetch(API_URL);
+    const dataJson = await data.json();
+    console.log(dataJson.data.cards[2].data.data.cards);
+    setRestaurantList(dataJson.data.cards[2].data.data.cards);
+  }
+  console.log("render");
+
   return (
     <>
       <div className="searchBar">
@@ -31,14 +48,14 @@ const CardContainer = () => {
           onChange={(e) => {
             setSearchText(e.target.value);
             if (e.target.value === "") {
-              setRestaurantList(Data);
+              setRestaurantList(restaurantList);
             }
           }}
         />
         <button
           id="searchQuerySubmit"
           onClick={() => {
-            setRestaurantList(searchRestaurant(searchText, Data));
+            setRestaurantList(searchRestaurant(searchText, restaurantList));
           }}
         >
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -56,27 +73,8 @@ const CardContainer = () => {
         }}
       >
         {restaurantList.map((item) => {
-          return <Card key={item.data.data.id} Data={item.data.data} />;
+          return <Card key={item.data.id} Data={item.data} />;
         })}
-
-        {/* {Card(Data[0])}
-        
-      <Card Data={Data[0]} />
-      <Card Data={Data[1]} />
-      <Card Data={Data[2]} />
-      <Card Data={Data[3]} />
-      <Card Data={Data[4]} />
-      <Card Data={Data[5]} />
-      <Card Data={Data[6]} />
-      <Card Data={Data[7]} />
-      <Card Data={Data[8]} />
-      <Card Data={Data[9]} />
-      <Card Data={Data[10]} />
-      <Card Data={Data[11]} />
-      <Card Data={Data[12]} />
-      <Card Data={Data[13]} />
-      <Card Data={Data[14]} />
-      <Card Data={Data[15]} /> */}
       </div>
     </>
   );
