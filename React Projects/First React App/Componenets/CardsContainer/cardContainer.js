@@ -4,17 +4,19 @@ import Data from "../../data2.json";
 import { useState, useEffect } from "react";
 import "./CardContainer.css";
 import { API_URL } from "../Constants/constants";
+import { ShimmerUI } from "../shimmer UI/shimmer UI";
 
 const CardContainer = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurantList, setRestaurantList] = useState([]);
+  const [allRestaurantData, setAllRestaurantData] = useState([]);
 
   console.log(restaurantList);
 
   const searchRestaurant = (searchText, restaurantList) => {
     console.log(restaurantList);
     const filteredData = restaurantList.filter((card) => {
-      if (card?.data?.name.toLowerCase().includes(searchText.toLowerCase())) {
+      if (card?.data?.name?.toLowerCase().includes(searchText.toLowerCase())) {
         return card;
       }
     });
@@ -32,12 +34,18 @@ const CardContainer = () => {
   async function APIRequest() {
     const data = await fetch(API_URL);
     const dataJson = await data.json();
-    console.log(dataJson.data.cards[2].data.data.cards);
-    setRestaurantList(dataJson.data.cards[2].data.data.cards);
+    const cards = dataJson?.data?.cards[2]?.data?.data?.cards;
+    setRestaurantList(cards);
+    setAllRestaurantData(cards);
   }
   console.log("render");
 
-  return (
+  return !restaurantList.length ? (
+    <>
+    <ShimmerUI />
+    <h1>Loading..</h1>
+    </>
+  ) : (
     <>
       <div className="searchBar">
         <input
@@ -48,7 +56,7 @@ const CardContainer = () => {
           onChange={(e) => {
             setSearchText(e.target.value);
             if (e.target.value === "") {
-              setRestaurantList(restaurantList);
+              setRestaurantList(allRestaurantData);
             }
           }}
         />
@@ -73,7 +81,7 @@ const CardContainer = () => {
         }}
       >
         {restaurantList.map((item) => {
-          return <Card key={item.data.id} Data={item.data} />;
+          return <Card key={item?.data?.id} Data={item?.data} />;
         })}
       </div>
     </>

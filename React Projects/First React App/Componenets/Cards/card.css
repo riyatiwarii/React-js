@@ -63,6 +63,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.9em;
+}
+
+.card .card-description .about-place .place {
+  width: 70%;
+}
+
+.card .card-description .about-place .place-review {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
 }
 .card .card-description .about-place .place-name {
   font-weight: 600;
@@ -74,7 +87,9 @@
   font-size: 14px;
   color: rgba(128, 128, 128, 0.97);
 }
+
 .card .card-description .about-place .rating {
+  width: 60px;
   font-size: 14px;
   border-radius: 4px;
   background-color: #0a6d0acc;
