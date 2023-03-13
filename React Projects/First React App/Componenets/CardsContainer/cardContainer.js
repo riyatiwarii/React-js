@@ -40,7 +40,7 @@ const CardContainer = () => {
   }
   console.log("render");
 
-  return !restaurantList.length ? (
+  return !allRestaurantData.length ? (
     <>
       <div className="searchBar">
         <input
@@ -101,9 +101,13 @@ const CardContainer = () => {
           padding: "1em 2em",
         }}
       >
-        {restaurantList.map((item) => {
-          return <Card key={item?.data?.id} Data={item?.data} />;
-        })}
+        {!restaurantList.length ? (
+          <h1>NOT FOUND!</h1>
+        ) : (
+          restaurantList.map((item) => {
+            return <Card key={item?.data?.id} Data={item?.data} />;
+          })
+        )}
       </div>
     </>
   );

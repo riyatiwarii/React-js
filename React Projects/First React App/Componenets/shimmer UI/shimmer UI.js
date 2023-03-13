@@ -107,6 +107,12 @@ const ShimmerUI = () => {
       <ShimmerEffect />
       <ShimmerEffect />
       <ShimmerEffect />
+      <ShimmerEffect />
+      <ShimmerEffect />
+      <ShimmerEffect />
+      <ShimmerEffect />
+      <ShimmerEffect />
+      <ShimmerEffect />
       </div>
     </>
 
