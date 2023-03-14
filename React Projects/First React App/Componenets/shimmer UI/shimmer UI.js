@@ -1,6 +1,19 @@
 import "./shimmer UI.css";
 import "../Cards/card.css";
-
+import { Carousel } from "../Carousel/carousel";
+const CarouselShimmer = () => {
+  return (
+    <div
+      className="carousel shimmer"
+      style={{
+        width: "100vw",
+        height: "300px",
+        backgroundColor: "rgba(82, 81, 81, 0.12)",
+        margin:'0 2em'
+      }}
+    ></div>
+  );
+};
 const ShimmerEffect = () => {
   return (
     <div className="cards-container ">
@@ -100,22 +113,22 @@ const ShimmerEffect = () => {
 const ShimmerUI = () => {
   return (
     <>
-    <div className = "shimmer_container">  
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
-      <ShimmerEffect />
+      <div className="shimmer_container">
+        <CarouselShimmer />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
+        <ShimmerEffect />
       </div>
     </>
-
   );
 };
 export { ShimmerUI };

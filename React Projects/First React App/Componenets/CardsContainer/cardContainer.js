@@ -5,8 +5,11 @@ import { useState, useEffect } from "react";
 import "./CardContainer.css";
 import { API_URL } from "../Constants/constants";
 import { ShimmerUI } from "../shimmer UI/shimmer UI";
+import { Carousel } from "../Carousel/carousel";
 
 const CardContainer = () => {
+  const [showCarousel, setShowCarousel] = useState(false);
+  console.log(showCarousel);
   const [searchText, setSearchText] = useState("");
   const [restaurantList, setRestaurantList] = useState([]);
   const [allRestaurantData, setAllRestaurantData] = useState([]);
@@ -64,6 +67,7 @@ const CardContainer = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
+   
       <ShimmerUI />
     </>
   ) : (
@@ -104,8 +108,13 @@ const CardContainer = () => {
         {!restaurantList.length ? (
           <h1>NOT FOUND!</h1>
         ) : (
-          restaurantList.map((item) => {
-            return <Card key={item?.data?.id} Data={item?.data} />;
+          restaurantList.map((item, index) => {
+            return (
+              <>
+                {!index ? <Carousel /> : null}
+                <Card key={item?.data?.id} Data={item?.data} />;
+              </>
+            );
           })
         )}
       </div>
