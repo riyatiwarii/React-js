@@ -1,5 +1,48 @@
-.carousel{
-width:100vw;
-height: 300px;
-background-color: #171a29;
+.carousel {
+  width: 100vw;
+  height: 350px;
+  background-color: #171a29;
+}
+
+#app {
+  height: 100%;
+}
+
+.swiper {
+  width: 60%;
+  height: 350px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: inline-block;
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  aspect-ratio: 260/260;
+  margin-top: 2em;
+}
+
+.swiper-button-prev, .swiper-button-next{
+
+    color: white !important;
+    
+}
+
+.swiper-pagination-bullet-active{
+    background-color: white !important;
+}
+
+.swiper-pagination-bullet{
+    background-color: rgb(255, 252, 252) !important;
 }

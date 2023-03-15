@@ -67,7 +67,7 @@ const CardContainer = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
-   
+
       <ShimmerUI />
     </>
   ) : (
@@ -111,7 +111,7 @@ const CardContainer = () => {
           restaurantList.map((item, index) => {
             return (
               <>
-                {!index ? <Carousel /> : null}
+                {!index ? <Carousel key={index} /> : null}
                 <Card key={item?.data?.id} Data={item?.data} />;
               </>
             );
